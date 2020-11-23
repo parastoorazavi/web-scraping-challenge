@@ -1,12 +1,12 @@
 # web-scraping-challenge
 
-Data is more powerful when we share it with others! Let's take what we've learned about HTML and CSS to create a dashboard showing off the analysis we've done.
+Web Scraping is a useful technique to extract large amounts of data from variety websites and saved them to a local file in your computer or to a database in table format. In this project, a web application is built that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page.
 
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Considerations](#consider_part)
+- [Step 1 - Scraping](#scraping)
+- [Step 2 - MongoDB and Flask Application](#flask_application)
 
 ## 🧐 About <a name = "about"></a>
 There are some plots of Latitude - Latitude Analysis which in this project they are going to use in building of visualization dashboard website. For this project we are donig:
@@ -15,7 +15,7 @@ There are some plots of Latitude - Latitude Analysis which in this project they 
 3.	Deploy the website to GitHub pages.
 
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Step 1 - Scraping <a name = "scraping"></a>
 
 **Landing page:** <br>
 - An explanation of the project.
@@ -36,7 +36,7 @@ There are some plots of Latitude - Latitude Analysis which in this project they 
 - The table must be a bootstrap table component.
 - The data must come from exporting the .csv file as HTML, or converting it to HTML.
 
-## :doughnut:Considerations. <a name = "consider_part"></a>
+## :doughnut:Step 2 - MongoDB and Flask Application. <a name = "flask_application"></a>
 
 - The website must, at the top of every page, have a navigation menu.
 - Has the name of the site on the left of the nav which allows users to return to the landing page from any page.
