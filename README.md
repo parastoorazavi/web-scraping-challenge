@@ -26,11 +26,11 @@ Create a Jupyter Notebook file called mission_to_mars.ipynb and use this to comp
 - Make sure to save a complete url string for this image.
 
 **Mars Facts:** <br>
-- Visit the Mars Facts webpage here and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+- Visit the Mars Facts webpage (https://space-facts.com/mars/) and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
 - Use Pandas to convert the data to a HTML table string.
 
 **Mars Hemispheres:** <br>
-- Visit the USGS Astrogeology site here to obtain high resolution images for each of Mar's hemispheres.
+- Visit the USGS Astrogeology site (https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars) to obtain high resolution images for each of Mar's hemispheres.
 - You will need to click each of the links to the hemispheres in order to find the image url to the full resolution image.
 - Save both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. Use a Python dictionary to store the data using the keys "img_url" and "title".
 - Append the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
