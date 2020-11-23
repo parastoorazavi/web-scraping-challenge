@@ -8,7 +8,7 @@ Web Scraping is a useful technique to extract large amounts of data from variety
 - [Step 1 - Scraping](#scraping)
 - [Step 2 - MongoDB and Flask Application](#flask_application)
 
-## 🧐 About <a name = "about"></a>
+## 🤓 About <a name = "about"></a>
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 Create a Jupyter Notebook file called mission_to_mars.ipynb and use this to complete all of your scraping and analysis tasks. The following outlines what you need to scrape.
 
@@ -20,7 +20,7 @@ Create a Jupyter Notebook file called mission_to_mars.ipynb and use this to comp
 - Assign the text to variables that you can reference later.
 
 **JPL Mars Space Images - Featured Image:** <br>
--	Visit the url for JPL Featured Space Image here.
+-	Visit the url for JPL Featured Space Image (https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars).
 -	Use splinter to navigate the site and find the image url for the current Featured Mars Image and assign the url string to a variable called "featured_image_url".
 - Make sure to find the image url to the full size .jpg image.
 - Make sure to save a complete url string for this image.
