@@ -9,41 +9,38 @@ Web Scraping is a useful technique to extract large amounts of data from variety
 - [Step 2 - MongoDB and Flask Application](#flask_application)
 
 ## 🧐 About <a name = "about"></a>
-There are some plots of Latitude - Latitude Analysis which in this project they are going to use in building of visualization dashboard website. For this project we are donig:
-1.	Create a website with 7 pages for different devices.
-2.	Create a table in html.
-3.	Deploy the website to GitHub pages.
+Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
+Create a Jupyter Notebook file called mission_to_mars.ipynb and use this to complete all of your scraping and analysis tasks. The following outlines what you need to scrape.
 
 
-## 🏁 Step 1 - Scraping <a name = "scraping"></a>
+## ✂️ Step 1 - Scraping <a name = "scraping"></a>
 
-**Landing page:** <br>
-- An explanation of the project.
-- Links to each visualizations page. There should be a sidebar containing preview images of each plot, and clicking an image should take the user to that visualization.
+**NASA Mars News:** <br>
+- Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text.
+- Assign the text to variables that you can reference later.
 
-**Four visualization pages:** <br>
--	A descriptive title and heading tag. 
--	The plot/visualization itself for the selected comparison.
-- A paragraph describing the plot and its significance.
+**JPL Mars Space Images - Featured Image:** <br>
+-	Visit the url for JPL Featured Space Image here.
+-	Use splinter to navigate the site and find the image url for the current Featured Mars Image and assign the url string to a variable called "featured_image_url".
+- Make sure to find the image url to the full size .jpg image.
+- Make sure to save a complete url string for this image.
 
-**Comparisons page:** <br>
-- Contains all of the visualizations on the same page so we can easily visually compare them.
-- Uses a Bootstrap grid for the visualizations.
-- The grid must be two visualizations across on screens medium and larger, and 1 across on extra-small and small screens.
+**Mars Facts:** <br>
+- Visit the Mars Facts webpage here and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+- Use Pandas to convert the data to a HTML table string.
 
-**Data page:** <br>
-- Displays a responsive table containing the data used in the visualizations.
-- The table must be a bootstrap table component.
-- The data must come from exporting the .csv file as HTML, or converting it to HTML.
+**Mars Hemispheres:** <br>
+- Visit the USGS Astrogeology site here to obtain high resolution images for each of Mar's hemispheres.
+- You will need to click each of the links to the hemispheres in order to find the image url to the full resolution image.
+- Save both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. Use a Python dictionary to store the data using the keys "img_url" and "title".
+- Append the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
 
-## :doughnut:Step 2 - MongoDB and Flask Application. <a name = "flask_application"></a>
+## 💻 Step 2 - MongoDB and Flask Application. <a name = "flask_application"></a>
 
-- The website must, at the top of every page, have a navigation menu.
-- Has the name of the site on the left of the nav which allows users to return to the landing page from any page.
-- Contains a dropdown menu on the right of the navbar named "Plots" that provides a link to each individual visualization page.
-- Provides two more text links on the right: "Comparisons," which links to the comparisons page, and "Data," which links to the data page.
-- Is responsive (using media queries). The nav must have similar behavior as the screenshots "Navigation Menu" section (notice the background color change).
+- Start by converting your Jupyter notebook into a Python script called scrape_mars.py with a function called scrape that will execute all of your scraping code from above and return one Python dictionary containing all of the scraped data.
+- Next, create a route called /scrape that will import your scrape_mars.py script and call your scrape function.
+- Create a root route / that will query your Mongo database and pass the mars data into an HTML template to display the data.
+- Create a template HTML file called index.html that will take the mars data dictionary and display all of the data in the appropriate HTML elements. Use the following as a guide for what the final product should look like, but feel free to create your own design.
 
-- Finally, the website must be deployed to GitHub pages.
 
  
