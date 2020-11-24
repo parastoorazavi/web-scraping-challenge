@@ -14,24 +14,24 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron text-center">
-      <h1><strong>Mission to Mars</strong></h1>
+    <div class="jumbotron text-center border-bottom">
+      <h1 style="font-family: Arial, Helvetica, sans-serif;"><strong>Mission to Mars</strong></h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
     <div class="row">
-      <div class="col-md-12"><h2><strong>Latest Mars News</strong></h2></div>
-      <h3 class="heading">{{mars.news_title}}</h3>
-      <h4><small>{{mars.news_p}}</small></h4>
+      <div class="col-md-12"><h2 style="font-family: Arial, Helvetica, sans-serif;"> Latest Mars News:</h2></div>
+      <h4 style="font-family: Arial, Helvetica, sans-serif;">{{ mars.news_title }}</h4>
+      <p style="font-family: Arial, Helvetica, sans-serif;"><small>{{ mars.news_p }}</small></p>
     </div>
     <div class="row">
-      <div class="col-md-8"><strong>Featured Mars Image</strong>
+      <div class="col-md-8"><h2 style="font-family: Arial, Helvetica, sans-serif;">Featured Mars Image</h2></div>
       <img src="{{mars.featured_image_url}}" alt="Features Mars Image">
       </div>
-      <div class="col-md-4"><strong>Mars Facts</strong></div>
-      {{mars.html_table}}
+      <div class="col-md-4"><h2 style="font-family: Arial, Helvetica, sans-serif;">Mars Facts</h2></div>
+      <table border="1">{{ mars.html_table }}</table>
     </div>
     <div class="row">
-      <div class="col-md-12"><strong>Mars Hemispheres</strong></div>
+      <div class="col-md-12"><h2 style="font-family: Arial, Helvetica, sans-serif;">Mars Hemispheres</h2></div>
       <hr>
     </div>
     <div class="row">

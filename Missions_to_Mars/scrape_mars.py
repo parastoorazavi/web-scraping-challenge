@@ -13,7 +13,7 @@ def init_browser():
 
 def scrape():
     browser = init_browser()
-    mars_dict ={}
+    mars_data ={}
 
     # Visit mars.nasa.gov
     nasa_url = 'https://mars.nasa.gov/news/'
@@ -24,8 +24,9 @@ def scrape():
     news_soup = BeautifulSoup(html, 'html.parser')
 
     # Get the articles, title and paragraph
-    news_title = news_soup.find('div', class_='content_title').text
-    news_p = news_soup.find('div', class_='article_teaser_body').text
+    articles = news_soup.find('ul', class_='item_list')
+    news_title = articles.find_all('div', class_='content_title')[0].text
+    news_p = articles.find_all('div', class_='article_teaser_body')[0].text
 
 
 
@@ -48,13 +49,10 @@ def scrape():
     fact_url = 'https://space-facts.com/mars/'
 
     # Scrape page to get table
-    tables = pd.read_html(fact_url)
-    df = tables[0]
+    df = pd.read_html(fact_url)[0]
     df.columns = ['description','value']
     df = df.set_index("description")
     html_table = df.to_html()
-    html_table.replace('\n', '')
-
 
     # Visit astrogeology.usgs.gov
     main_hemisphere_url = 'https://astrogeology.usgs.gov'
@@ -85,13 +83,16 @@ def scrape():
         img_dict['img_url'] = img_url
         hemisphere_image_urls.append(img_dict)
 
-    mars_dict = {
+    mars_data = {
         "news_title": news_title,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
-        "html_table": str(html_table),
+        "html_table": html_table,
         "hemisphere_images": hemisphere_image_urls
     }
 
+    # Close the browser after scraping
+    browser.quit()
+
     # Return results
-    return mars_dict
+    return mars_data
