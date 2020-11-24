@@ -24,10 +24,8 @@ def scrape():
     news_soup = BeautifulSoup(html, 'html.parser')
 
     # Get the articles, title and paragraph
-    articles = news_soup.find_all('ul', class_='item_list')
-    for article in articles:
-        news_title = article.find('div', class_='content_title').text
-        news_p = article.find('div', class_='article_teaser_body').text
+    news_title = news_soup.find('div', class_='content_title').text
+    news_p = news_soup.find('div', class_='article_teaser_body').text
 
 
 
@@ -72,8 +70,9 @@ def scrape():
     results = hemisphere_soup.find_all('div', class_='item')
     hemisphere_image_urls = []
     for result in results:
-        title = result.find('div', class_="description").h3.text
-        link = result.find('div', class_="description").a['href']
+        hemisphere = result.find('div', class_="description")
+        title = hemisphere.h3.text
+        link = hemisphere.a['href']
         browser.visit(main_hemisphere_url+link)
         html = browser.html
         hemisphere_image_soup = BeautifulSoup(html, 'html.parser')
@@ -86,15 +85,12 @@ def scrape():
         img_dict['img_url'] = img_url
         hemisphere_image_urls.append(img_dict)
 
-    # Close the browser after scraping
-    browser.quit()
-
     mars_dict = {
         "news_title": news_title,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
         "html_table": str(html_table),
-        "hemisphere_image_urls": hemisphere_image_urls
+        "hemisphere_images": hemisphere_image_urls
     }
 
     # Return results

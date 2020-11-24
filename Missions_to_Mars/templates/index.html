@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mission to Mars</title>
+  <title >Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -14,12 +14,14 @@
 
 <body>
   <div class="container">
-
-
+    <div class="jumbotron text-center">
+      <h1><strong>Mission to Mars</strong></h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
     <div class="row">
-      <div class="col-md-12"><strong>Latest Mars News</strong></div>
-      <h2>{{mars.news_title}}</h2>
-      <h3>{{mars.news_p}}</h3>
+      <div class="col-md-12"><h2><strong>Latest Mars News</strong></h2></div>
+      <h3 class="heading">{{mars.news_title}}</h3>
+      <h4><small>{{mars.news_p}}</small></h4>
     </div>
     <div class="row">
       <div class="col-md-8"><strong>Featured Mars Image</strong>
@@ -33,10 +35,16 @@
       <hr>
     </div>
     <div class="row">
-      {%for hemisphere in mars.%}
+      {% for item in mars.hemisphere_image_urls %}
       <div class="col-6"></div>
-      
+      <div>
+        <img width="512 px" height="512 px" src="{{item.img_url }}">
+      </div>
+      <div>
+        <h4> {{item.title }} </h4>  
+      </div>
     </div>
+    {% endfor %}
   </div>
 </body>
 
