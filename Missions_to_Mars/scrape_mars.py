@@ -21,12 +21,12 @@ def scrape():
 
     # Scrape page into Soup
     html = browser.html
-    news_soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
 
     # Get the articles, title and paragraph
-    articles = news_soup.find('ul', class_='item_list')
-    news_title = articles.find_all('div', class_='content_title')[0].text
-    news_p = articles.find_all('div', class_='article_teaser_body')[0].text
+    articles = soup.find_all('ul', class_='item_list')
+    news_title = articles.find('div', class_='content_title').text
+    news_p = articles.find('div', class_='article_teaser_body').text
 
 
 
@@ -53,6 +53,8 @@ def scrape():
     df.columns = ['description','value']
     df = df.set_index("description")
     html_table = df.to_html()
+    html_table.replace('\n', '')
+    df.to_html('mars_facts_table.html')
 
     # Visit astrogeology.usgs.gov
     main_hemisphere_url = 'https://astrogeology.usgs.gov'

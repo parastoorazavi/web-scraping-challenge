@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title >Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../templates/assets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -14,30 +15,80 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron text-center border-bottom">
-      <h1 style="font-family: Arial, Helvetica, sans-serif;"><strong>Mission to Mars</strong></h1>
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
     <div class="row">
-      <div class="col-md-12"><h2 style="font-family: Arial, Helvetica, sans-serif;"> Latest Mars News:</h2></div>
+      <div class="col-md-12"><h2 class="latest_news"> Latest Mars News:</h2></div>
       <h4 style="font-family: Arial, Helvetica, sans-serif;">{{ mars.news_title }}</h4>
       <p style="font-family: Arial, Helvetica, sans-serif;"><small>{{ mars.news_p }}</small></p>
     </div>
+    <br>
     <div class="row">
-      <div class="col-md-8"><h2 style="font-family: Arial, Helvetica, sans-serif;">Featured Mars Image</h2></div>
-      <img src="{{mars.featured_image_url}}" alt="Features Mars Image">
+      <div class="col-md-8"><h2 class="featured_image">Featured Mars Image</h2>
+      <img src="{{mars.featured_image_url}}" alt="Features Mars Image" style="height: 550px; width: 650px;">
       </div>
-      <div class="col-md-4"><h2 style="font-family: Arial, Helvetica, sans-serif;">Mars Facts</h2></div>
-      <table border="1">{{ mars.html_table }}</table>
+      <div class="col-md-4">
+        <h4 class="facts">Mars Facts</h4>
+      <table border="1.5" class="dataframe">
+        <thead>
+          <tr style="text-align: left;">
+            <th></th>
+            <th>value</th>
+          </tr>
+          <tr>
+            <th>description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Equatorial Diameter:</th>
+            <td>6,792 km</td>
+          </tr>
+          <tr>
+            <th>Polar Diameter:</th>
+            <td>6,752 km</td>
+          </tr>
+          <tr>
+            <th>Mass:</th>
+            <td>6.39 × 10^23 kg (0.11 Earths)</td>
+          </tr>
+          <tr>
+            <th>Moons:</th>
+            <td>2 (Phobos &amp; Deimos)</td>
+          </tr>
+          <tr>
+            <th>Orbit Distance:</th>
+            <td>227,943,824 km (1.38 AU)</td>
+          </tr>
+          <tr>
+            <th>Orbit Period:</th>
+            <td>687 days (1.9 years)</td>
+          </tr>
+          <tr>
+            <th>Surface Temperature:</th>
+            <td>-87 to -5 °C</td>
+          </tr>
+          <tr>
+            <th>First Record:</th>
+            <td>2nd millennium BC</td>
+          </tr>
+          <tr>
+            <th>Recorded By:</th>
+            <td>Egyptian astronomers</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="row">
-      <div class="col-md-12"><h2 style="font-family: Arial, Helvetica, sans-serif;">Mars Hemispheres</h2></div>
+      <div class="col-md-12"><h2 class="hemispheres">Mars Hemispheres</h2></div>
       <hr>
     </div>
     <div class="row">
       {% for item in mars.hemisphere_image_urls %}
-      <div class="col-6"></div>
-      <div>
+      <div class="col-md-6">
         <img width="512 px" height="512 px" src="{{item.img_url }}">
       </div>
       <div>
