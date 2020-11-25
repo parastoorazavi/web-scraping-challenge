@@ -16,7 +16,7 @@ def scrape():
     mars_data ={}
 
     # Visit mars.nasa.gov
-    nasa_url = 'https://mars.nasa.gov/news/'
+    nasa_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(nasa_url)
 
     # Scrape page into Soup
@@ -50,8 +50,8 @@ def scrape():
 
     # Scrape page to get table
     df = pd.read_html(fact_url)[0]
-    df.columns = ['description','value']
-    df = df.set_index("description")
+    df.columns = ['Description','Mars']
+    df = df.set_index("Description")
     html_table = df.to_html()
     html_table.replace('\n', '')
     df.to_html('mars_facts_table.html')
