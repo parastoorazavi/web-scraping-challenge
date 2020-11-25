@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title >Mission to Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../templates/assets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -16,87 +15,49 @@
 <body>
   <div class="container">
     <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      <h1 style="font-size: 56px;">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" style="background: #4579b2; border: none; font-size: 12px;">Scrape New Data</a></p>
     </div>
+<br>
+    <!-- Latest Mars News -->
     <div class="row">
       <div class="col-md-12"><h2 class="latest_news"> Latest Mars News:</h2></div>
-      <h4 style="font-family: Arial, Helvetica, sans-serif;">{{ mars.news_title }}</h4>
+      <h6 style="font-family: Arial, Helvetica, sans-serif;"><b>{{ mars.news_title }}</b></h6>
       <p style="font-family: Arial, Helvetica, sans-serif;"><small>{{ mars.news_p }}</small></p>
     </div>
     <br>
+
+    <!-- Featured Mars Image -->
     <div class="row">
       <div class="col-md-8"><h2 class="featured_image">Featured Mars Image</h2>
-      <img src="{{mars.featured_image_url}}" alt="Features Mars Image" style="height: 550px; width: 650px;">
+      <img src="{{mars.featured_image_url}}" alt="Features Mars Image" style="height: 550px; width: 730px;">
       </div>
+
+      <!-- Mars Facts -->
       <div class="col-md-4">
         <h4 class="facts">Mars Facts</h4>
-      <table border="1.5" class="dataframe">
-        <thead>
-          <tr style="text-align: left;">
-            <th></th>
-            <th>value</th>
-          </tr>
-          <tr>
-            <th>description</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Equatorial Diameter:</th>
-            <td>6,792 km</td>
-          </tr>
-          <tr>
-            <th>Polar Diameter:</th>
-            <td>6,752 km</td>
-          </tr>
-          <tr>
-            <th>Mass:</th>
-            <td>6.39 × 10^23 kg (0.11 Earths)</td>
-          </tr>
-          <tr>
-            <th>Moons:</th>
-            <td>2 (Phobos &amp; Deimos)</td>
-          </tr>
-          <tr>
-            <th>Orbit Distance:</th>
-            <td>227,943,824 km (1.38 AU)</td>
-          </tr>
-          <tr>
-            <th>Orbit Period:</th>
-            <td>687 days (1.9 years)</td>
-          </tr>
-          <tr>
-            <th>Surface Temperature:</th>
-            <td>-87 to -5 °C</td>
-          </tr>
-          <tr>
-            <th>First Record:</th>
-            <td>2nd millennium BC</td>
-          </tr>
-          <tr>
-            <th>Recorded By:</th>
-            <td>Egyptian astronomers</td>
-          </tr>
-        </tbody>
-      </table>
+        {{mars.html_table | safe}}
     </div>
+
+
+<!-- Mars Hemispheres -->
     <div class="row">
-      <div class="col-md-12"><h2 class="hemispheres">Mars Hemispheres</h2></div>
+      <div class="col-md-12"><h2 class="hemispheres">Mars Hemispheres</h2>
       <hr>
+      <div class="row">       
+        {% for item in mars.hemisphere_image_urls %} 
+          <div class="col-md-6 border">
+                  <img width="512 px" height="512 px" src="{{ item.img_url | safe }}">
+                  <h4> {{ item.title | safe }} </h4>  
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+</div> 
+    
+
     </div>
-    <div class="row">
-      {% for item in mars.hemisphere_image_urls %}
-      <div class="col-md-6">
-        <img width="512 px" height="512 px" src="{{item.img_url }}">
-      </div>
-      <div>
-        <h4> {{item.title }} </h4>  
-      </div>
-    </div>
-    {% endfor %}
   </div>
 </body>
-
 </html>
+
