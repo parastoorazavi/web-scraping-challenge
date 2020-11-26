@@ -5,6 +5,7 @@ from splinter import Browser
 import pandas as pd
 
 
+
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -24,7 +25,7 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     # Get the articles, title and paragraph
-    articles = soup.find_all('ul', class_='item_list')
+    articles = soup.find('ul', class_='item_list')
     news_title = articles.find('div', class_='content_title').text
     news_p = articles.find('div', class_='article_teaser_body').text
 
