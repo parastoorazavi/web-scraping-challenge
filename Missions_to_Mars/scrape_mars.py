@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import pymongo
+import time
 from splinter import Browser
 import pandas as pd
 
@@ -32,7 +33,6 @@ def scrape():
 
 
     # Visit jpl.nasa.gov
-    main_jpl_url = 'https://www.jpl.nasa.gov'
     jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(jpl_url)
 
@@ -40,11 +40,13 @@ def scrape():
     html = browser.html
     image_soup = BeautifulSoup(html, 'html.parser')
 
+    browser.click_link_by_partial_text('FULL IMAGE')
+    time.sleep(3)
+    browser.click_link_by_partial_text('more info')
+    browser.click_link_by_partial_text(".jpg")
+
     # Get the featured Image
-    image = image_soup.find_all('img')[3]['src']
-    featured_image_url = main_jpl_url + image
-
-
+    featured_image_url = browser.url
 
     # Visit space-facts.com
     fact_url = 'https://space-facts.com/mars/'
